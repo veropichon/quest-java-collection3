@@ -15,11 +15,13 @@ public class Thanos {
 
         // TODO 1 : Retrieve and remove the oldest hero in one line
         Hero oldest = null;
+        oldest = heroes.pollFirst();
 
         System.out.println("\nOldest hero:");
         System.out.println(oldest == null ? "" : oldest.getName());
 
         // TODO 2: Show heroes by age (descending)
+
         System.out.println("\nHeroes by age (descending) :");
         for (Hero hero : heroes) {
             System.out.println(hero.getName() + ", " + hero.getAge());
@@ -31,9 +33,13 @@ public class Thanos {
         heroes.add(spiderman);
         heroes.add(ironman);
 
+        TreeSet<Hero> tasctheroes = new TreeSet<>();
+        tasctheroes = (TreeSet<Hero>) heroes.descendingSet();
+
+
         System.out.println("\nSubset of heroes :");
-        for (Hero hero : heroes) {
-            System.out.println(hero.getName() + ", " + hero.getAge());
+        for (Hero hero : tasctheroes.subSet(spiderman, true, ironman, true)) {
+            System.out.println(hero.getName() + ", " + hero.getAge());;
         }
     }
 }
